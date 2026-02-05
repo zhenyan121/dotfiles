@@ -1,0 +1,87 @@
+# =============================
+# ❌ 敏感文件 & 私人数据
+# =============================
+*.pem
+*.key
+*.crt
+*.env
+.env.local
+.env.*.local
+secrets/
+secrets.sh
+credentials
+credentials.json
+netrc
+.gpg/
+.ssh/          # ← 注意：不要上传私钥！可以单独备份或加密后上传公钥
+.aws/          # AWS 凭证
+.azure/        # Azure 凭证
+.gcloud/       # Google Cloud 凭证
+.config/gcloud/
+
+# =============================
+# 🧹 缓存 & 临时文件
+# =============================
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.cache/
+.tmp/
+.temp/
+
+# =============================
+# 💻 系统/平台专属文件（谨慎提交）
+# =============================
+.local/
+.config/user-dirs.dirs      # 桌面路径等本地化设置
+.config/pulse/               # 音频设备配置（每台机器不同）
+.config/monitors.xml         # 显示器布局（多屏用户注意）
+.config/fontconfig/          # 字体缓存（可重建）
+.config/dconf/               # GNOME 设置（可能含隐私）
+.config/nvim/session/        # Neovim 会话（临时状态）
+.zsh_history                 # Shell 历史记录（含命令、路径、甚至密码！）
+.bash_history
+.fish_history
+
+# =============================
+# 🖥️ GUI 应用程序配置（通常太大或太个性化）
+# =============================
+.config/discord/
+.config/Code/User/workspaceStorage/  # VS Code 工作区缓存
+.config/Code/User/globalStorage/
+.config/Code/User/settings.json      # ← 可选提交，但注意别含 token
+.config/Code/User/keybindings.json   # ← 可提交
+.config/Code/User/snippets/          # ← 可提交
+.config/sublime-text/
+.config/VSCodium/
+.config/JetBrains/                   # IDE 配置（项目路径、许可证等）
+
+# =============================
+# 🐳 Docker / 开发工具
+# =============================
+.docker/
+.terraform/
+.terraform.lock.hcl
+.tfstate
+.tfstate.backup
+.terraform.d/
+
+# =============================
+# 📦 包管理器缓存
+# =============================
+node_modules/
+venv/
+.env/bin/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =============================
+# 🚫 Git 自己产生的文件
+# =============================
+.git/
+!.gitignore     # ← 保留 .gitignore 自己（重要！）
+
