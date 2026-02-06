@@ -1,0 +1,34 @@
+#导入颜色文件
+include themes/frappe.conf
+#设置左右边距
+window_padding_width 5
+#隐藏标题栏
+hide_window_decorations yes
+#背景透明度
+background_opacity 0.8
+#字体
+font_family JetBrainsMono Nerd Font
+bold_font auto
+italic_font auto
+bold_italic_font auto
+#字体大小
+font_size 15
+#不要记住窗口大小（yes no）
+remember_window_size no
+initial_window_width 105c
+initial_window_height 30c
+#关闭窗口时不要询问是否关闭
+confirm_os_window_close 0
+#开启光标拖影
+cursor_trail 1 
+cursor_shape block
+shell_integration no-cursor
+
+# 1. 启用 splits 布局（必须放在布局列表的首位或明确指定）
+enabled_layouts splits,stack
+
+# 2. 映射快捷键：在当前窗口下方新建分屏
+map f5 launch --location=hsplit --cwd=current
+
+# 3. 映射快捷键：在当前窗口右侧新建分屏
+map f6 launch --location=vsplit --cwd=current

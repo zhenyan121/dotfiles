@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>sans-serif</string>
+    </test>
+    <edit name="family" mode="prepend" binding="strong">
+      <string>Source Han Sans CN</string>
+      <string>Source Han Sans</string>
+      <string>Twemoji</string>
+    </edit>
+  </match>
+
+  <match target="pattern">
+    <test name="family">
+      <string>Source Han Sans CN</string>
+    </test>
+    <edit name="style" mode="assign">
+      <string>SemiLight</string>
+    </edit>
+  </match>
+
+  <match target="font">
+    <edit name="antialias" mode="assign"><bool>true</bool></edit>
+    <edit name="hinting" mode="assign"><bool>true</bool></edit>
+    <edit name="hintstyle" mode="assign"><const>hintslight</const></edit>
+    <edit name="rgba" mode="assign"><const>rgb</const></edit>
+  </match>
+</fontconfig>

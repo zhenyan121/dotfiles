@@ -1,0 +1,356 @@
+{
+  // 电池电量
+  "battery": {
+    "interval": 60,
+    "states": {
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}% ",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂂",
+      "󰁹"
+    ],
+    "tooltip-format": "剩余电量：{capacity}%\n充 放 电 ：{power}\n可用时间：{timeTo}\n---\n电池健康度：{health}%"
+  },
+
+  // 时钟
+  "clock": {
+    "interval": 60,
+    "format": "󰥔 {:%H:%M}",
+    "tooltip-format": "{:%Y/%m/%d %A}\n---\n左键：打开时钟\n右键：打开日历",
+    "max-length": 25,
+    "on-click": "gnome-clocks",
+    "on-click-right": "gnome-calendar"
+  },
+
+  // 日期小部件（点击打开日历）
+  "clock#date": {
+    "format": "󰸗 {:%m-%d}",
+    "on-click": "gnome-calendar",
+    "tooltip-format": "{:%Y/%m/%d %A}"
+  },
+
+  // 系统托盘（蓝牙、输入法等图标）
+  "tray": {
+    "icon-size": 22,
+    "spacing": 7
+  },
+
+  // niri 工作区指示器
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󰜋",
+      "default": ""
+    }
+  },
+
+  // 当前窗口标题美化
+  "niri/window": {
+    "format": "{}",
+    "rewrite": {
+      "(.*) - Mozilla Firefox": "🌎 $1",
+      "(.*) - zsh": "> [$1]"
+    }
+  },
+
+  // 网络 & 蓝牙组合抽屉
+  "group/network-bluetooth": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
+  },
+
+  // 网络状态
+  "network": {
+    "format-disconnected": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "{icon}",
+    "format-icons": {
+      "disconnected": "󰤮",
+      "wifi": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "ethernet": "󰈀"
+    },
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}\n---\n左键：打开面板\n右键：打开高级网络配置工具",
+    "tooltip-format-ethernet": "{ifname} : {ipaddr}\n---\n左键：打开面板\n右键：打开高级网络配置工具",
+    "tooltip-format-disconnected": "网络未连接\n---\n左键：打开面板\n右键：打开高级网络配置工具",
+    "on-click": "kitty --class nmtui -e nmtui",
+    "on-click-right": "nm-connection-editor"
+  },
+
+  // 蓝牙控制
+  "bluetooth": {
+    "format-disabled": "󰂲",
+    "tooltip-format-disabled": "左键：启用蓝牙",
+    "format": "󰂯",
+    "tooltip-format-on": "左键：禁用蓝牙\n右键：打开面板",
+    "format-connected": "󰂱",
+    "tooltip-format-connected": "󰂱 {:device_alias}\n---\n右键：打开面板",
+    "on-click": "~/.config/waybar/scripts/toggle-bluetooth.sh",
+    "on-click-right": "kitty --class bluetui -e bluetui"
+  },
+
+  // 性能模式切换（左键循环）
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "当前性能模式：{profile}\n---\n左键：切换性能模式",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "󱐋",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  // 音频组（图标 + 滑块）
+  "group/audio": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+
+  // 音频控制（支持滚动调节麦克风音量）
+  "pulseaudio": {
+    "tooltip-format": "左键：静音\n右键：关闭麦克风\n中键：打开面板",
+    "format": "{icon} {format_source} ",
+    "format-bluetooth": " {format_source} ",
+    "format-source": "{volume}%",
+    "format-source-muted": "",
+    "format-muted": " {format_source} ",
+    "format-icons": {
+      "headphone": "",
+      "bluetooth": "",
+      "speaker": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click-middle": "pavucontrol --tab=3",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
+  },
+
+  // 音量滑块（横向）
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+
+  // 多媒体播放器控制（mpris）
+  "mpris": {
+    "format": "{player_icon}",
+    "format-paused": "{status_icon}",
+    "player-icons": {
+      "default": "▶"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    "tooltip": "{dynamic}",
+    "enable-tooltip-len-limits": true
+  },
+
+  // 应用启动器 + 壁纸切换
+  "custom/applauncher": {
+    "tooltip-format": "左键：软件启动菜单\n右键：切换壁纸",
+    "format": "󰣇",
+    "on-click": "fuzzel",
+    "on-click-right": "waypaper"
+  },
+
+  // 电源菜单组（登出/重启/锁屏）
+  "group/powermenu": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/wlogout",
+      "custom/reboot",
+      "custom/logout",
+      "custom/lockscreen"
+    ]
+  },
+
+  "custom/wlogout": {
+    "tooltip": false,
+    "format": "󰐥",
+    "on-click": "wlogout",
+    "on-scroll-up": "true",
+    "on-scroll-down": "true"
+  },
+
+  "custom/lockscreen": {
+    "tooltip": false,
+    "format": "",
+    "on-click": "swaylock || hyprlock",
+    "on-scroll-up": "true",
+    "on-scroll-down": "true"
+  },
+
+  "custom/reboot": {
+    "tooltip": false,
+    "format": "",
+    "on-click": "systemctl reboot",
+    "on-scroll-up": "true",
+    "on-scroll-down": "true"
+  },
+
+  "custom/logout": {
+    "format": "󰈆",
+    "on-click": "niri msg action quit",
+    "tooltip": false,
+    "on-scroll-up": "true",
+    "on-scroll-down": "true"
+  },
+
+  // ✅ 内屏亮度控制模块（已优化，不依赖外屏）
+  // 使用 backlight + slider 组合，适配大多数笔记本/内置显示器
+  "backlight": {
+    "tooltip": true,
+    "tooltip-format": "调节内屏亮度",
+    "format": "{icon}",
+    "format-icons": [
+      "", // 0-10%
+      "", // 10-20%
+      "", // 20-30%
+      "", // 30-40%
+      "", // 40-50%
+      "", // 50-60%
+      "", // 60-70%
+      "", // 70-80%
+      ""  // 80-100%
+    ]
+  },
+
+  "backlight/slider": {
+    "min": 5,     // 最低亮度设为5避免完全黑屏
+    "max": 100,
+    "orientation": "horizontal"
+  },
+
+  // 通知中心（swaync）
+  "custom/swaync": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  // 备用通知方案（mako）
+  "custom/mako": {
+    "format": "",
+    "on-click": "makoctl restore"
+  },
+
+  // 系统设置面板
+  "custom/settings": {
+    "format": "",
+    "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center",
+    "tooltip-format": "打开系统设置"
+  },
+
+  // 自动更新检查器（Arch Linux）
+  "custom/updates": {
+    "format": "{}{icon}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": "",
+      "updated": ""
+    },
+    "exec": "~/.config/waybar/scripts/check-updates.sh",
+    "interval": 3600,
+    "on-click": "kitty -e sysup"
+  },
+
+  // 隐私指示器（如屏幕共享）
+  "privacy": {
+    "icon-spacing": 10,
+    "icon-size": 16,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
+  },
+
+  // niri 任务栏扩展
+  "cffi/niri-taskbar": {
+    "module_path": "/usr/lib/waybar/libniri_taskbar.so",
+    "apps": {
+      "signal": [
+        {
+          "match": "\\([0-9]+\\)$",
+          "class": "unread"
+        }
+      ]
+    }
+  },
+
+  // 兼容 dwl / mangowc 的工作区模块（备用）
+  "ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": true,
+    "on-click": "activate",
+    "on-click-right": "deactivate",
+    "sort-by-id": true
+  },
+
+  // dwl 窗口标题显示
+  "dwl/window": {
+    "format": "[{layout}]{title}"
+  },
+
+  // 分隔符
+  "custom/separator#1": {
+    "format": "󱋱",
+    "tooltip": false
+  }
+}
+
