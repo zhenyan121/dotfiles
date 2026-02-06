@@ -6,4 +6,4 @@
 
 我推荐你可以看一下 [https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide](https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide) 这个为大佬的仓库
 
-部分配置是直接抄的，太懒了hhhh
+部分配置是直接抄上面仓库的，太懒了hhhh
