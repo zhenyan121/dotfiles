@@ -128,6 +128,14 @@
       "power-saver": "",
     },
   },
+  "custom/dae": {
+    "exec": "$HOME/.config/waybar/scripts/dae_control.sh",
+    "return-type": "json",
+    "interval": 5,
+    "on-click": "$HOME/.config/waybar/scripts/dae_control.sh toggle",
+    "tooltip": true,
+    "format": "{}"
+  },
   //截图
   "custom/screenshot": {
     "format": "",
