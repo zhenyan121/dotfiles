@@ -176,7 +176,7 @@ window#waybar.empty #window {
     padding: 0px 0px;
     font-size: 1.39em; /* 25px */
 }
-
+#custom-dae,
 #power-profiles-daemon,
 #custom-colorpicker,
 #idle_inhibitor {
