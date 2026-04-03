@@ -294,6 +294,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "mako"
 spawn-at-startup "awww-daemon"
+spawn-at-startup "awww-daemon" "-n" "overview"
 spawn-at-startup "nm-applet"
 spawn-sh-at-startup "xrdb -merge /home/zhenyan121/.Xresources"
 spawn-sh-at-startup "clipse --listen"
@@ -383,6 +384,11 @@ window-rule {
     opacity 0.99
     //禁止边框画到窗口后面
     draw-border-with-background false
+}
+
+layer-rule{
+    match namespace="awww-daemonoverview"
+    place-within-backdrop true
 }
 
 binds {
