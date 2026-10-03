@@ -46,3 +46,11 @@ fi
 eval "$(zoxide init zsh)"
 alias cat='bat'
 alias cd='z'  # 或保留 cd，同时用 z 快速跳转
+
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+
+export PATH="$HOME/.local/bin:$PATH"
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
